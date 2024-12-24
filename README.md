@@ -1,5 +1,5 @@
 
-# github-action-json-property
+# github-action-json5-property
 
 ![Banner image showing successfully executed GitHub Action](banner.png)
 
@@ -13,7 +13,7 @@ Use the action inside your workflow yaml file like this:
 ...
 - name: get version
     id: version
-    uses: notiz-dev/github-action-json-property@release
+    uses: vrkit-platform/github-action-json-property@release
     with: 
         path: 'package.json'
         prop_path: 'version'
@@ -22,14 +22,13 @@ Use the action inside your workflow yaml file like this:
 
 ```
 
-
-Get a nested property value with dot separated prop_path 
+Get a nested property value with dot separated prop_path
 
 ```yaml
 ...
 - name: get nested property
     id: format_script
-    uses: notiz-dev/github-action-json-property@release
+    uses: vrkit-platform/github-action-json-property@release
     with: 
         path: 'package.json'
         prop_path: 'scripts.format'
@@ -44,7 +43,7 @@ Get a property value as string
 ...
 - name: get nested property
     id: format_script
-    uses: notiz-dev/github-action-json-property@release
+    uses: vrkit-platform/github-action-json-property@release
     with: 
         path: 'package.json'
         prop_path: 'scripts.format'

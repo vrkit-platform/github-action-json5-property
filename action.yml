@@ -1,14 +1,14 @@
-name: 'Get JSON Property'
-description: 'Simple GitHub Action to read a specified property from a JSON file.'
-author: 'notiz.dev'
+name: "Get JSON/JSON5 Property"
+description: "Simple GitHub Action to read a specified property from a JSON/JSON5 file."
+author: "vrkit-platform"
 inputs:
   path:
-    description: 'path to json file'
+    description: "path to json/json5 file"
   prop_path:
-    description: 'dot separated property key (e.g.: scripts.build)'
+    description: "dot separated property key (e.g.: scripts.build)"
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node20"
+  main: "dist/index.js"
 branding:
   color: "yellow"
   icon: "filter"  

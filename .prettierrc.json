@@ -2,10 +2,11 @@
     "printWidth": 80,
     "tabWidth": 2,
     "useTabs": false,
-    "semi": true,
-    "singleQuote": true,
+    "semi": false,
+    "singleQuote": false,
+    "proseWrap": "always",
     "trailingComma": "none",
     "bracketSpacing": false,
-    "arrowParens": "avoid",
+    "arrowParens": "always",
     "parser": "typescript"
   }
