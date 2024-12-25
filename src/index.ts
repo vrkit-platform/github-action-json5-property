@@ -1,8 +1,9 @@
 import * as core from "@actions/core"
 import JSON5 from "json5"
-import fs from "fs"
+import { globSync } from "glob"
+import Fs from "fs"
 import util from "util"
-const readFileAsync = util.promisify(fs.readFile)
+const readFileAsync = util.promisify(Fs.readFile)
 
 function getNestedObject(nestedObj: any, pathArr: string[]) {
   return pathArr.reduce(
@@ -12,9 +13,22 @@ function getNestedObject(nestedObj: any, pathArr: string[]) {
 }
 
 async function run() {
-  const path: string = core.getInput("path"),
-    prop: string[] = core.getInput("prop_path").split(".")
   try {
+    const inputPath: string = core.getInput("path"),
+      prop: string[] = core.getInput("prop_path").split(".")
+
+    let path: string = inputPath
+    if (!Fs.existsSync(path)) {
+      const files = globSync(inputPath)
+      if (files.length) {
+        path = files[0]
+      }
+
+      if (!Fs.existsSync(path)) {
+        throw Error(`${inputPath} did not match an exact file, nor did it match any file as a glob pattern`)
+      }
+    }
+
     const buffer = await readFileAsync(path),
       json = JSON5.parse(buffer.toString()),
       nestedProp = getNestedObject(json, prop)

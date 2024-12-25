@@ -3,7 +3,7 @@ description: "Simple GitHub Action to read a specified property from a JSON/JSON
 author: "vrkit-platform"
 inputs:
   path:
-    description: "path to json/json5 file"
+    description: "path to json/json5 file (if glob is specified, the first match is used)"
   prop_path:
     description: "dot separated property key (e.g.: scripts.build)"
 runs:
